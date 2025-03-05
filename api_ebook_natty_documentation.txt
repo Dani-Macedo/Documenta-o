@@ -1,0 +1,189 @@
+# Documentação da API - eBook "Natty or Fake Natty"
+
+## Introdução
+A API do eBook "Natty or Fake Natty" permite a interação programática com o conteúdo do eBook, fornecendo acesso a capítulos, imagens, referências e anotações. 
+
+## Base URL
+```
+https://api.nattyorfake.com/v1
+```
+
+## Autenticação
+A API usa autenticação por token JWT. Inclua o token no cabeçalho `Authorization`:
+```http
+Authorization: Bearer {seu_token_aqui}
+```
+
+## Endpoints
+
+### 1. Obter informações sobre o eBook
+**GET** `/ebook`
+
+**Resposta:**
+```json
+{
+  "titulo": "IA Pode Criar um Corpo 'Fake Natty' ?",
+  "autor": "[Nome do Autor]",
+  "data_publicacao": "2025-03-10",
+  "descricao": "Este e-book explora como as IAs generativas podem criar imagens ultra-musculosas e hiper-realistas, levantando questões sobre estética, percepção e expectativas no mundo fitness."
+}
+```
+
+---
+
+### 2. Listar capítulos
+**GET** `/ebook/capitulos`
+
+**Resposta:**
+```json
+{
+  "capitulos": [
+    {"id": 1, "titulo": "Introdução ao Desafio"},
+    {"id": 2, "titulo": "A Cultura do 'Fake Natty'"},
+    {"id": 3, "titulo": "Análise Comparativa: IA vs. Natural"},
+    {"id": 4, "titulo": "Reflexão Final: O Impacto na Percepção do Alcançável"}
+  ]
+}
+```
+
+---
+
+### 3. Obter conteúdo de um capítulo
+**GET** `/ebook/capitulos/{id}`
+
+**Parâmetros:**
+- `id` (int) - ID do capítulo
+
+**Resposta:**
+```json
+{
+  "id": 2,
+  "titulo": "A Cultura do 'Fake Natty'",
+  "conteudo": "Na era das redes sociais e da cultura fitness, a busca pelo corpo perfeito atingiu patamares alarmantes..."
+}
+```
+
+---
+
+### 4. Buscar referências do eBook
+**GET** `/ebook/referencias`
+
+**Resposta:**
+```json
+{
+  "referencias": [
+    {"titulo": "Estudo sobre Hipertrofia Muscular", "link": "https://exemplo.com/estudo"},
+    {"titulo": "Uso de IA no Fitness", "link": "https://exemplo.com/ia-fitness"}
+  ]
+}
+```
+
+---
+
+### 5. Criar uma anotação
+**POST** `/ebook/anotacoes`
+
+**Body:**
+```json
+{
+  "capitulo_id": 3,
+  "texto": "A IA pode realmente enganar um observador atento?"
+}
+```
+
+**Resposta:**
+```json
+{
+  "id": 12,
+  "mensagem": "Anotação salva com sucesso."
+}
+```
+
+---
+
+### 6. Listar anotações
+**GET** `/ebook/anotacoes`
+
+**Resposta:**
+```json
+{
+  "anotacoes": [
+    {"id": 12, "capitulo_id": 3, "texto": "A IA pode realmente enganar um observador atento?"}
+  ]
+}
+```
+
+---
+
+### 7. Obter imagens geradas por IA
+**GET** `/ebook/imagens`
+
+**Resposta:**
+```json
+{
+  "imagens": [
+    {"id": 1, "descricao": "Imagem gerada por IA de um físico ultra-musculoso", "url": "https://exemplo.com/imagem1.jpg"},
+    {"id": 2, "descricao": "Comparação entre físico natural e IA", "url": "https://exemplo.com/imagem2.jpg"}
+  ]
+}
+```
+
+---
+
+### 8. Adicionar feedback sobre o eBook
+**POST** `/ebook/feedback`
+
+**Body:**
+```json
+{
+  "usuario": "João Silva",
+  "comentario": "Gostei muito do conteúdo, mas gostaria de mais exemplos práticos!",
+  "nota": 4
+}
+```
+
+**Resposta:**
+```json
+{
+  "mensagem": "Feedback enviado com sucesso!"
+}
+```
+
+---
+
+### 9. Listar feedbacks
+**GET** `/ebook/feedback`
+
+**Resposta:**
+```json
+{
+  "feedbacks": [
+    {"usuario": "João Silva", "comentario": "Gostei muito do conteúdo, mas gostaria de mais exemplos práticos!", "nota": 4},
+    {"usuario": "Maria Souza", "comentario": "Excelente abordagem sobre o tema!", "nota": 5}
+  ]
+}
+```
+
+---
+
+### 10. Buscar trechos destacados do eBook
+**GET** `/ebook/destaques`
+
+**Resposta:**
+```json
+{
+  "destaques": [
+    {"id": 1, "capitulo_id": 2, "texto": "A busca pelo corpo perfeito atingiu patamares alarmantes."},
+    {"id": 2, "capitulo_id": 3, "texto": "O olho humano ainda é o melhor juiz?"}
+  ]
+}
+```
+
+---
+
+## Considerações Finais
+Esta API permite o acesso e interação com o eBook "Natty or Fake Natty", proporcionando uma experiência rica para leitores que desejam explorar o conteúdo de maneira programática.
+
+### Baixe o eBook
+Para acessar o eBook completo, clique no link abaixo:
+[Baixar eBook](https://docs.google.com/document/d/17UX83c5NFGhgP4q9e9Za8qvywXj6eEk87LR6A1m95uc/edit?usp=sharing)
